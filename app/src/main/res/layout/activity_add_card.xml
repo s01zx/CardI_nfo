@@ -49,6 +49,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint="MM"
+            android:maxLength="2"
             android:inputType="number"
             android:layout_marginLeft="10dp"/>
 
@@ -62,6 +63,7 @@
 
         <EditText
             android:id="@+id/yy"
+            android:maxLength="2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint="YY"

@@ -29,7 +29,7 @@ import static android.widget.LinearLayout.VERTICAL;
 public class MainActivity extends AppCompatActivity implements BottomSheet.BottomSheetListener {
 
     FloatingActionButton fab, fab1, fab2;
-    LinearLayout fabLayout1, fabLayout2;
+    LinearLayout fabLayout1, fabLayout2, empty;
     View fabBGLayout;
     boolean isFABOpen = false;
     RecyclerView recyclerView;
@@ -100,6 +100,8 @@ public class MainActivity extends AppCompatActivity implements BottomSheet.Botto
         fabBGLayout = findViewById(R.id.fabBGLayout);
 
         recyclerView = findViewById(R.id.recycler);
+
+        empty = findViewById(R.id.emptyView);
     }
 
 
@@ -167,7 +169,15 @@ public class MainActivity extends AppCompatActivity implements BottomSheet.Botto
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        adapter.setTasks(trans);
+                        if (trans.size() == 0){
+                            recyclerView.setVisibility(View.GONE);
+                            empty.setVisibility(View.VISIBLE);
+                        }else{
+                            recyclerView.setVisibility(View.VISIBLE);
+                            empty.setVisibility(View.GONE);
+                            adapter.setTasks(trans);
+                        }
+
                     }
                 });
             }
@@ -183,7 +193,15 @@ public class MainActivity extends AppCompatActivity implements BottomSheet.Botto
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        adapter.setTasks(trans);
+                        //adapter.setTasks(trans);
+                        if (trans.size() == 0){
+                            recyclerView.setVisibility(View.GONE);
+                            empty.setVisibility(View.VISIBLE);
+                        }else{
+                            recyclerView.setVisibility(View.VISIBLE);
+                            empty.setVisibility(View.GONE);
+                            adapter.setTasks(trans);
+                        }
                     }
                 });
             }
